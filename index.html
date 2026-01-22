@@ -64,8 +64,7 @@
                 <a class="hover:text-primary transition-colors" href="#problem">The Problem</a>
                 <a class="hover:text-primary transition-colors" href="#process">How it Works</a>
                 <a class="hover:text-primary transition-colors" href="#math">The Math</a>
-                <a class="bg-white/10 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all"
-                    href="#">Login</a>
+
             </nav>
             <button class="md:hidden text-white p-2">
                 <span class="material-symbols-outlined text-2xl">menu</span>
@@ -100,14 +99,15 @@
                         We built a proprietary engine to beat Irish 'Deemed Disposal' tax. Own the top 30 US stocks
                         directly, pay 33% CGT, and keep your compound interest.
                     </p>
-                    <form class="flex flex-col sm:flex-row gap-4 w-full max-w-lg" method="POST" data-netlify="true"
-                        name="waitlist-hero">
+                    <form
+                        class="group relative w-full max-w-lg bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-2 flex flex-col sm:flex-row gap-2 transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_50px_-10px_rgba(0,208,132,0.25)]"
+                        method="POST" action="/success.html" data-netlify="true" name="waitlist-hero">
                         <input type="hidden" name="form-name" value="waitlist-hero" />
                         <input
-                            class="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-base"
+                            class="flex-1 bg-transparent border-none rounded-xl px-6 text-white placeholder-white/30 focus:outline-none focus:ring-0 text-base lg:text-lg"
                             placeholder="Enter your email" type="email" name="email" required />
                         <button
-                            class="bg-primary text-background-dark px-8 py-4 rounded-lg font-bold text-lg hover:opacity-90 active:scale-[0.98] transition-all whitespace-nowrap"
+                            class="bg-[#00d084] text-[#0a2e22] px-8 py-4 rounded-xl font-bold text-lg hover:-translate-y-1 hover:shadow-[0_20px_40px_-10px_rgba(0,208,132,0.4)] transition-all duration-300 whitespace-nowrap"
                             type="submit">
                             Join the Beta
                         </button>
@@ -403,8 +403,8 @@
                     <h3 class="text-3xl md:text-4xl font-black text-white mb-6 tracking-tight">Join our Alpha.</h3>
                     <p class="text-white/50 text-base md:text-lg mb-8">We're onboarding our first 500 users manually to
                         ensure perfect execution.</p>
-                    <form class="flex flex-col sm:flex-row gap-4" method="POST" data-netlify="true"
-                        name="waitlist-footer">
+                    <form class="flex flex-col sm:flex-row gap-4" method="POST" action="/success.html"
+                        data-netlify="true" name="waitlist-footer">
                         <input type="hidden" name="form-name" value="waitlist-footer" />
                         <input
                             class="flex-1 bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-base"
