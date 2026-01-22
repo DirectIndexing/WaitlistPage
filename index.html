@@ -50,7 +50,7 @@
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-300">
-    <header class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md">
+    <header class="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0a2e22] backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <div class="bg-primary p-1.5 rounded-lg">
@@ -64,12 +64,38 @@
                 <a class="hover:text-primary transition-colors" href="#problem">The Problem</a>
                 <a class="hover:text-primary transition-colors" href="#process">How it Works</a>
                 <a class="hover:text-primary transition-colors" href="#math">The Math</a>
-
             </nav>
-            <button class="md:hidden text-white p-2">
+            <button id="mobile-menu-btn"
+                class="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
                 <span class="material-symbols-outlined text-2xl">menu</span>
             </button>
         </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#0a2e22]">
+            <nav class="px-5 py-6 flex flex-col gap-6">
+                <a class="text-lg font-bold text-white hover:text-primary transition-colors" href="#problem">The
+                    Problem</a>
+                <a class="text-lg font-bold text-white hover:text-primary transition-colors" href="#process">How it
+                    Works</a>
+                <a class="text-lg font-bold text-white hover:text-primary transition-colors" href="#math">The Math</a>
+            </nav>
+        </div>
+        <script>
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                // Optional: Swap icon if needed
+            });
+
+            // Close menu when clicking a link
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+        </script>
     </header>
     <section class="relative overflow-hidden pt-12 pb-16 lg:pt-24 lg:pb-32">
         <div class="max-w-7xl mx-auto px-5 lg:px-8">
@@ -436,6 +462,7 @@
             </div>
         </div>
     </footer>
+
 
 </body>
 
