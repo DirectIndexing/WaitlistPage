@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Project Direct | Beat the 38% Tax Trap</title>
+    <title>Project Direct | Thematic Investment Marketplace</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
         rel="stylesheet" />
@@ -17,9 +17,11 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#00d084",
-                        "background-light": "#f5f8f7",
-                        "background-dark": "#0a2e22",
+                        "primary": "#10b981", // emerald-500
+                        "primary-hover": "#059669", // emerald-600
+                        "background-light": "#f8fafc", // slate-50
+                        "background-dark": "#0f172a", // slate-900
+                        "surface-dark": "#1e293b", // slate-800
                     },
                     fontFamily: {
                         "display": ["Inter", "sans-serif"]
@@ -28,6 +30,7 @@
                         "DEFAULT": "0.25rem",
                         "lg": "0.5rem",
                         "xl": "0.75rem",
+                        "2xl": "1rem",
                         "full": "9999px"
                     },
                 },
@@ -37,10 +40,10 @@
     <style type="text/tailwindcss">
         body { font-family: 'Inter', sans-serif; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .chart-gradient { background: linear-gradient(180deg, rgba(0, 208, 132, 0.2) 0%, rgba(0, 208, 132, 0) 100%); }
+        .chart-gradient { background: linear-gradient(180deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0) 100%); }
         input, button { min-height: 48px; }
         .dublin-map {
-            background-color: #08241b;
+            background-color: #0f172a;
             background-image: 
                 linear-gradient(rgba(100, 116, 139, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(100, 116, 139, 0.1) 1px, transparent 1px);
@@ -50,36 +53,39 @@
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-300">
-    <header class="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0a2e22] backdrop-blur-md">
+    <header class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <div class="bg-primary p-1.5 rounded-lg">
-                    <span
-                        class="material-symbols-outlined text-background-dark font-bold text-xl">account_balance_wallet</span>
+                <div class="bg-primary/20 p-1.5 rounded-lg border border-primary/20">
+                    <span class="material-symbols-outlined text-primary font-bold text-xl">dataset</span>
                 </div>
                 <h1 class="text-lg font-bold tracking-tight text-white">Project <span class="text-primary">Direct</span>
                 </h1>
             </div>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
-                <a class="hover:text-primary transition-colors" href="#problem">The Problem</a>
-                <a class="hover:text-primary transition-colors" href="#process">How it Works</a>
+                <a class="hover:text-primary transition-colors" href="#marketplace">Marketplace</a>
                 <a class="hover:text-primary transition-colors" href="#math">The Math</a>
-                <a class="hover:text-primary transition-colors" href="#faq">FAQ</a>
+                <a class="hover:text-primary transition-colors" href="#security">Security</a>
             </nav>
+            <a href="#join"
+                class="hidden md:inline-flex bg-primary text-background-dark px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary-hover transition-colors">
+                Beta Access
+            </a>
             <button id="mobile-menu-btn"
                 class="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
                 <span class="material-symbols-outlined text-2xl">menu</span>
             </button>
         </div>
         <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#0a2e22]">
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-background-dark">
             <nav class="px-5 py-6 flex flex-col gap-6">
-                <a class="text-lg font-bold text-white hover:text-primary transition-colors" href="#problem">The
-                    Problem</a>
-                <a class="text-lg font-bold text-white hover:text-primary transition-colors" href="#process">How it
-                    Works</a>
+                <a class="text-lg font-bold text-white hover:text-primary transition-colors"
+                    href="#marketplace">Marketplace</a>
                 <a class="text-lg font-bold text-white hover:text-primary transition-colors" href="#math">The Math</a>
-                <a class="text-lg font-bold text-white hover:text-primary transition-colors" href="#faq">FAQ</a>
+                <a class="text-lg font-bold text-white hover:text-primary transition-colors"
+                    href="#security">Security</a>
+                <a class="text-lg font-bold text-primary hover:text-primary-hover transition-colors" href="#join">Beta
+                    Access</a>
             </nav>
         </div>
         <script>
@@ -99,621 +105,372 @@
             });
         </script>
     </header>
-    <section class="relative overflow-hidden pt-12 pb-16 lg:pt-24 lg:pb-32">
-        <div class="max-w-7xl mx-auto px-5 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div
-                    class="flex flex-col gap-6 lg:gap-8 max-w-2xl text-center lg:text-left items-center lg:items-start">
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-[10px] md:text-xs font-bold uppercase tracking-wider">
-                            🇪🇺 Built in Dublin | GDPR Compliant
-                        </div>
-                        <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] md:text-xs font-bold uppercase tracking-wider">
-                            <span class="relative flex h-2 w-2">
-                                <span
-                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                            </span>
-                            Now in Private Alpha
-                        </div>
-                    </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-black leading-tight tracking-tight text-white">
-                        The US Market. <br class="hidden md:block" />Without the <span class="text-primary">38% Tax
-                            Trap.</span>
-                    </h1>
-                    <p class="text-base md:text-xl text-white/70 leading-relaxed max-w-xl">
-                        <span class="text-white font-bold">Ireland's first Direct Indexing Marketplace.</span> We
-                        unwrap the ETF so you own the shares directly in your own regulated brokerage account. No 8-year
-                        deemed disposal.
-                    </p>
-                    <form
-                        class="group relative w-full max-w-lg bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-2 flex flex-col sm:flex-row gap-2 transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_50px_-10px_rgba(0,208,132,0.25)]"
-                        method="POST" action="/success" data-netlify="true" name="waitlist-hero">
-                        <input type="hidden" name="form-name" value="waitlist-hero" />
-                        <input
-                            class="flex-1 bg-transparent border-none rounded-xl px-6 text-white placeholder-white/30 focus:outline-none focus:ring-0 text-base lg:text-lg"
-                            placeholder="Enter your email" type="email" name="email" required />
-                        <button
-                            class="bg-[#00d084] text-[#0a2e22] px-8 py-4 rounded-xl font-bold text-lg hover:-translate-y-1 hover:shadow-[0_20px_40px_-10px_rgba(0,208,132,0.4)] transition-all duration-300 whitespace-nowrap"
-                            type="submit">
-                            Join the Beta
-                        </button>
-                    </form>
-                    <p class="text-primary/60 text-xs md:text-sm font-medium flex items-center gap-2">
-                        <span class="material-symbols-outlined text-sm md:text-base">group</span>
-                        Limited to first 500 testers.
-                    </p>
-                </div>
-                <div class="relative flex justify-center lg:justify-end">
-                    <div
-                        class="relative w-full max-w-[320px] h-[560px] md:h-[640px] bg-[#0c1a16] rounded-[2.5rem] border-[6px] border-white/5 shadow-2xl p-3 overflow-hidden">
-                        <div
-                            class="bg-background-dark h-full rounded-[1.8rem] p-6 flex flex-col gap-6 border border-white/5">
-                            <div class="flex justify-between items-center">
-                                <span class="material-symbols-outlined text-white/40 text-sm">menu</span>
-                                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                                    <span class="material-symbols-outlined text-white/40 text-xs">person</span>
-                                </div>
-                            </div>
-                            <div class="space-y-1">
-                                <p class="text-white/50 text-[10px] font-medium uppercase tracking-widest">Our Portfolio
-                                    Value</p>
-                                <h3 class="text-2xl md:text-3xl font-bold text-white">€142,504.12</h3>
-                            </div>
-                            <div class="bg-primary/10 rounded-xl p-4 border border-primary/20">
-                                <p class="text-primary text-[10px] font-bold uppercase mb-1">Tax Saved</p>
-                                <div class="flex items-end justify-between">
-                                    <span class="text-2xl font-bold text-primary">€24,000</span>
-                                    <span class="material-symbols-outlined text-primary text-xl">trending_up</span>
-                                </div>
-                            </div>
-                            <div class="flex-1 mt-2 relative">
-                                <div class="absolute inset-0 flex items-end gap-2">
-                                    <div class="w-full h-[40%] bg-primary/20 rounded-t-sm"></div>
-                                    <div class="w-full h-[55%] bg-primary/20 rounded-t-sm"></div>
-                                    <div class="w-full h-[45%] bg-primary/20 rounded-t-sm"></div>
-                                    <div class="w-full h-[70%] bg-primary/30 rounded-t-sm"></div>
-                                    <div class="w-full h-[65%] bg-primary/30 rounded-t-sm"></div>
-                                    <div
-                                        class="w-full h-[90%] bg-primary rounded-t-sm shadow-[0_0_15px_rgba(0,208,132,0.4)]">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/10 blur-[100px] rounded-full">
-                    </div>
-                </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-32 lg:pb-40 bg-background-dark">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-[20%] -right-[10%] w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full">
+            </div>
+            <div class="absolute top-[20%] -left-[10%] w-[400px] h-[400px] bg-blue-500/10 blur-[100px] rounded-full">
             </div>
         </div>
-    </section>
-    <section class="bg-white text-slate-900 py-20 lg:py-32 border-y border-slate-200" id="explained">
-        <div class="max-w-7xl mx-auto px-5 lg:px-8">
-            <div class="text-center mb-16 lg:mb-20">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 tracking-tight">The Old Way vs. The Direct Way</h2>
-                <p class="text-slate-500 text-base md:text-lg max-w-2xl mx-auto">We automate the complex rebalancing so
-                    it feels just as passive as an ETF.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-                <!-- Card 1: The ETF -->
-                <div class="bg-slate-50 rounded-3xl border border-slate-200 p-8 lg:p-10 flex flex-col gap-8">
-                    <div class="border-b border-slate-200 pb-6">
-                        <h3 class="text-2xl font-bold text-slate-400">The ETF Wrapper</h3>
-                    </div>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-4 text-slate-500 font-medium text-lg">
-                            <span class="material-symbols-outlined text-red-400 text-2xl">close</span>
-                            Pooled Assets
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-500 font-medium text-lg">
-                            <span class="material-symbols-outlined text-red-400 text-2xl">close</span>
-                            38% Deemed Disposal Tax
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-500 font-medium text-lg">
-                            <span class="material-symbols-outlined text-red-400 text-2xl">close</span>
-                            Forced 8-Year Sales
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-500 font-medium text-lg">
-                            <span class="material-symbols-outlined text-red-400 text-2xl">close</span>
-                            Cannot Offset Losses
-                        </li>
-                    </ul>
-                </div>
-                <!-- Card 2: Project Direct -->
-                <div
-                    class="bg-primary/10 rounded-3xl border border-primary/20 p-8 lg:p-10 flex flex-col gap-8 relative overflow-hidden">
-                    <div
-                        class="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-3xl rounded-full translate-x-12 -translate-y-12">
-                    </div>
-                    <div class="border-b border-primary/20 pb-6 relative">
-                        <h3 class="text-2xl font-bold text-slate-900">Direct Indexing</h3>
-                    </div>
-                    <ul class="space-y-4 relative">
-                        <li class="flex items-center gap-4 text-slate-900 font-bold text-lg">
-                            <span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
-                            You Own the Shares
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-900 font-bold text-lg">
-                            <span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
-                            33% Capital Gains Tax
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-900 font-bold text-lg">
-                            <span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
-                            Control When You Sell
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-900 font-bold text-lg">
-                            <span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
-                            Harvest Losses
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="bg-background-dark py-20 lg:py-32 text-white border-b border-white/5" id="process">
-        <div class="max-w-7xl mx-auto px-5 lg:px-8">
-            <div class="text-center mb-20 lg:mb-24">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 tracking-tight text-white">The problem isn't
-                    the stocks. It's the wrapper.</h2>
-            </div>
 
-            <!-- The Visual Equation -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-8 mb-20">
-
-                <!-- Element 1: ETF -->
-                <div
-                    class="relative bg-white/5 rounded-3xl w-72 h-72 flex flex-col items-center justify-center border-2 border-white/10 shadow-sm group hover:border-red-400/50 transition-colors duration-500">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 relative z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-primary text-[10px] md:text-xs font-bold uppercase tracking-wider mb-8 backdrop-blur-sm">
+                <span class="relative flex h-2 w-2">
                     <span
-                        class="material-symbols-outlined text-7xl text-white/40 group-hover:text-red-400 transition-colors duration-500">inventory_2</span>
-                    <span class="font-bold text-xl text-white mt-4">Standard ETF</span>
-                    <!-- Red Badge -->
-                    <div
-                        class="absolute -top-4 -right-4 bg-red-500 text-white font-bold text-lg px-5 py-2 rounded-xl shadow-lg rotate-6 border-2 border-white">
-                        38% Tax 😱
-                    </div>
-                </div>
-
-                <!-- Element 2: Action -->
-                <div class="flex flex-col items-center gap-3 z-10">
-                    <p
-                        class="font-bold text-primary uppercase tracking-widest text-[10px] md:text-xs bg-primary/10 px-3 py-1 rounded-full">
-                        We unbundle it</p>
-                    <span
-                        class="material-symbols-outlined text-5xl text-primary md:rotate-0 rotate-90">arrow_forward</span>
-                </div>
-
-                <!-- Element 3: The Solution -->
-                <div
-                    class="relative bg-white/5 rounded-3xl w-72 h-72 flex flex-col items-center justify-center border-2 border-white/10 shadow-2xl shadow-primary/10 overflow-visible group text-white">
-                    <!-- Floating Icons Cluster -->
-                    <div class="flex gap-3 mb-6">
-                        <div
-                            class="w-14 h-14 bg-gray-900 rounded-2xl flex items-center justify-center text-white shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
-                            <span class="material-symbols-outlined text-2xl">laptop_mac</span>
-                        </div>
-                        <div
-                            class="w-14 h-14 bg-[#00A4EF] rounded-2xl flex items-center justify-center text-white shadow-lg transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                            <span class="material-symbols-outlined text-2xl">grid_view</span>
-                        </div>
-                        <div
-                            class="w-14 h-14 bg-[#FF9900] rounded-2xl flex items-center justify-center text-white shadow-lg transform rotate-6 group-hover:rotate-0 transition-transform duration-300 delay-150">
-                            <span class="material-symbols-outlined text-2xl">shopping_cart</span>
-                        </div>
-                    </div>
-                    <span class="font-bold text-xl text-white text-center px-6">You own the assets
-                        directly</span>
-                    <!-- Green Badge -->
-                    <div
-                        class="absolute -top-4 -right-4 bg-[#00d084] text-[#0a2e22] font-bold text-lg px-5 py-2 rounded-xl shadow-[0_10px_20px_-5px_rgba(0,208,132,0.4)] -rotate-3 border-2 border-white">
-                        33% Tax 😌
-                    </div>
-                </div>
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Now in Private Alpha
             </div>
 
-            <!-- The Text Below -->
-            <div class="max-w-3xl mx-auto text-center">
-                <p class="text-xl md:text-2xl text-white font-medium leading-relaxed mb-6">
-                    An ETF is just a wrapper around companies like Apple and Microsoft. In Ireland, that wrapper
-                    triggers the <span
-                        class="text-red-400 font-bold decoration-red-400 underline underline-offset-4">8-Year Deemed
-                        Disposal tax.</span>
-                </p>
-                <p class="text-lg md:text-xl text-white/60 leading-relaxed">
-                    Project Direct strips away the wrapper. You buy the same companies, but because you own them
-                    directly, you play by the **standard tax rules (33% CGT)**. No forced sales. No 8-year timer.
-                </p>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight text-white mb-8">
+                Own the Future.<br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-300">Not a
+                    Fund.</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto mb-10">
+                Invest directly in <span class="text-white font-medium">curated stock baskets</span>. Bypass the <span
+                    class="text-red-400 font-bold">41% ETF tax</span>.
+                <br class="hidden md:block" />
+                You own the shares; we automate the engine.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#join"
+                    class="w-full sm:w-auto bg-primary text-background-dark px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-hover hover:-translate-y-1 transition-all shadow-[0_0_30px_-5px_rgba(16,185,129,0.4)]">
+                    Secure Early Access
+                </a>
+                <a href="#marketplace"
+                    class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-lg text-white border border-white/10 hover:bg-white/5 transition-all">
+                    View Baskets
+                </a>
             </div>
         </div>
     </section>
-    <!-- 3. THE MARKETPLACE -->
-    <section id="marketplace" class="bg-background-light py-20 lg:py-32">
+
+    <!-- TRUST / LOGOS SECTION -->
+    <section class="py-10 bg-surface-dark border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+                <p class="text-slate-400 text-xs md:text-sm font-medium uppercase tracking-widest text-center">
+                    Directly integrated with your regulated broker. <span class="text-white hidden md:inline">We never
+                        touch your cash.</span>
+                </p>
+                <div
+                    class="flex flex-wrap justify-center items-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                    <span class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                        <span class="material-symbols-outlined">api</span> Alpaca
+                    </span>
+                    <span class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                        <span class="material-symbols-outlined">account_balance</span> InteractiveBrokers
+                    </span>
+                    <span class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                        <span class="material-symbols-outlined">currency_exchange</span> DriveWealth
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKETPLACE SECTION -->
+    <section id="marketplace" class="py-20 lg:py-32 bg-background-light text-slate-900 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-5 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-6xl font-black text-background-dark mb-4 tracking-tight">Choose your Direct
-                </h2>
+                <h2 class="text-3xl md:text-5xl font-black text-background-dark mb-4 tracking-tight">Thematic Investment
+                    Marketplace</h2>
+                <p class="text-slate-500 text-lg">Choose your basket. Own the underlying assets. No wrappers.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- CARD 1: US Core 30 -->
+                <!-- Basket 1: US Titans -->
                 <div
-                    class="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg relative flex flex-col gap-6 hover:-translate-y-1 transition-transform">
-                    <div
-                        class="absolute top-4 right-4 bg-slate-100 text-slate-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                        Most Popular</div>
-                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-2xl">rocket_launch</span>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-2">US Core 30</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">The 30 largest US companies ('The Titans').
-                            Capped Market Weight logic to ensure liquidity.</p>
-                    </div>
-                    <div class="mt-auto pt-6 border-t border-slate-100">
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Key Feature</p>
-                        <p class="text-slate-900 font-medium text-sm flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                            15% Single Stock Cap
-                        </p>
-                        <p class="text-xs text-slate-400 mt-4">Best For: <span class="text-slate-700 font-bold">Maximum
-                                Growth</span></p>
-                    </div>
-                </div>
-
-                <!-- CARD 2: US Balanced 50 -->
-                <div
-                    class="bg-white rounded-3xl p-8 border-2 border-primary shadow-xl relative flex flex-col gap-6 transform md:-translate-y-4">
-                    <div
-                        class="absolute top-0 right-0 bg-primary text-background-dark text-[10px] font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-lg uppercase tracking-wide">
-                        Quant Optimized</div>
-                    <div class="w-12 h-12 rounded-xl bg-primary/20 text-primary flex items-center justify-center">
-                        <span class="material-symbols-outlined text-2xl">balance</span>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-2">US Balanced 50</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Reduces Tech concentration. Uses
-                            <strong>Stratified Sampling</strong> to pick the top 'Sector Leaders' from all 11 GICS
-                            sectors.
-                        </p>
-                    </div>
-                    <div class="mt-auto pt-6 border-t border-slate-100">
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Key Feature</p>
-                        <p class="text-slate-900 font-medium text-sm flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                            Sector Neutral Strategy
-                        </p>
-                        <p class="text-xs text-slate-400 mt-4">Best For: <span
-                                class="text-slate-700 font-bold">Stability & Broad Tracking</span></p>
-                    </div>
-                </div>
-
-                <!-- CARD 3: Dividend Kings -->
-                <div
-                    class="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg relative flex flex-col gap-6 hover:-translate-y-1 transition-transform opacity-75">
-                    <div
-                        class="absolute top-4 right-4 bg-slate-100 text-slate-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                        Coming Soon</div>
-                    <div class="w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-2xl">shield</span>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Dividend Kings</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">A basket of 'Aristocrats'—companies with 25+
-                            years of rising dividends.</p>
-                    </div>
-                    <div class="mt-auto pt-6 border-t border-slate-100">
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Key Feature</p>
-                        <p class="text-slate-900 font-medium text-sm flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
-                            Yield Weighted
-                        </p>
-                        <p class="text-xs text-slate-400 mt-4">Best For: <span class="text-slate-700 font-bold">Passive
-                                Income</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 lg:py-32 bg-background-dark border-y border-white/5" id="math">
-        <div class="max-w-7xl mx-auto px-5 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-                <div class="space-y-8">
-                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">The math doesn't lie.</h2>
-                    <p class="text-white/60 text-lg md:text-xl leading-relaxed">
-                        Over 20 years, the difference isn't just a few percent—it's life-changing. Direct Indexing
-                        Allows your Capital to keep working for you.
-                    </p>
-                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
-                        <p class="text-white font-bold text-2xl mb-2">The €22k Difference</p>
-                        <p class="text-primary text-xs md:text-sm font-bold uppercase tracking-widest">Calculated on a
-                            €50k initial investment</p>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div
-                        class="w-full aspect-[4/3] bg-white/5 rounded-2xl border border-white/10 p-6 relative overflow-hidden">
-                        <div class="absolute inset-0 p-8 flex items-end">
-                            <svg class="w-full h-2/3" preserveAspectRatio="none" viewBox="0 0 100 50">
-                                <path d="M0 45 Q 20 40, 40 30 T 100 5" fill="none" stroke="#00d084" stroke-width="3"
-                                    vector-effect="non-scaling-stroke"></path>
-                                <path d="M0 45 Q 10 42, 20 38 L 20 45 Q 30 42, 40 38 L 40 45 Q 60 40, 100 25"
-                                    fill="none" stroke="#64748b" stroke-dasharray="4" stroke-width="2"
-                                    vector-effect="non-scaling-stroke"></path>
-                            </svg>
+                    class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
+                            <span class="material-symbols-outlined text-2xl">flag_circle</span>
                         </div>
-                        <div class="absolute top-6 right-6 flex flex-col items-end gap-3">
-                            <div class="flex items-center gap-2 text-primary">
-                                <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-                                <span class="text-[10px] md:text-xs font-bold uppercase tracking-wide">Direct
-                                    Indexing</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-slate-500">
-                                <span class="w-2.5 h-2.5 rounded-full bg-slate-500"></span>
-                                <span class="text-[10px] md:text-xs font-bold uppercase tracking-wide">Standard
-                                    ETF</span>
-                            </div>
+                        <span
+                            class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Direct
+                            Ownership</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">US Titans</h3>
+                    <p class="text-slate-500 text-sm mb-6 h-10">Top 30 S&P companies. The bedrock of the American
+                        economy.</p>
+
+                    <!-- Sparkline Simulation -->
+                    <div class="h-16 w-full bg-slate-50 rounded-lg overflow-hidden relative mb-6">
+                        <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 50">
+                            <path d="M0,45 Q20,40 40,30 T100,10" fill="none" stroke="#2563eb" stroke-width="2" />
+                            <path d="M0,45 Q20,40 40,30 T100,10 V50 H0 Z" fill="rgba(37,99,235,0.1)" stroke="none" />
+                        </svg>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+                        <div class="text-xs font-bold text-slate-400">30 Holdings</div>
+                        <button
+                            class="text-blue-600 font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                            View Basket <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Basket 2: Nasdaq Innovators -->
+                <div
+                    class="bg-white rounded-2xl p-6 border-2 border-primary/20 shadow-xl relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="absolute top-0 right-0 bg-primary text-background-dark text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wide">
+                        Popular</div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600">
+                            <span class="material-symbols-outlined text-2xl">rocket_launch</span>
                         </div>
+                        <span
+                            class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Direct
+                            Ownership</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Nasdaq Innovators</h3>
+                    <p class="text-slate-500 text-sm mb-6 h-10">Top 15 tech leaders defining the future. High growth
+                        potential.</p>
+
+                    <!-- Sparkline Simulation -->
+                    <div class="h-16 w-full bg-slate-50 rounded-lg overflow-hidden relative mb-6">
+                        <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 50">
+                            <path d="M0,40 Q30,45 50,20 T100,5" fill="none" stroke="#9333ea" stroke-width="2" />
+                            <path d="M0,40 Q30,45 50,20 T100,5 V50 H0 Z" fill="rgba(147,51,234,0.1)" stroke="none" />
+                        </svg>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+                        <div class="text-xs font-bold text-slate-400">15 Holdings</div>
+                        <button
+                            class="text-purple-600 font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                            View Basket <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Basket 3: Green Energy -->
+                <div
+                    class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="flex justify-between items-start mb-6">
                         <div
-                            class="absolute bottom-6 left-6 text-white/30 text-[10px] uppercase font-bold tracking-widest">
-                            20 Year Projection
+                            class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600">
+                            <span class="material-symbols-outlined text-2xl">eco</span>
                         </div>
+                        <span
+                            class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Direct
+                            Ownership</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Green Energy</h3>
+                    <p class="text-slate-500 text-sm mb-6 h-10">ESG leaders tackling climate change. Sustainable growth.
+                    </p>
+
+                    <!-- Sparkline Simulation -->
+                    <div class="h-16 w-full bg-slate-50 rounded-lg overflow-hidden relative mb-6">
+                        <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 50">
+                            <path d="M0,45 L20,40 L40,35 L60,38 L80,20 L100,15" fill="none" stroke="#10b981"
+                                stroke-width="2" />
+                            <path d="M0,45 L20,40 L40,35 L60,38 L80,20 L100,15 V50 H0 Z" fill="rgba(16,185,129,0.1)"
+                                stroke="none" />
+                        </svg>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+                        <div class="text-xs font-bold text-slate-400">20 Holdings</div>
+                        <button
+                            class="text-emerald-600 font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                            View Basket <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-20 lg:py-32 bg-white text-background-dark" id="founder">
+
+    <!-- DETERMINISTIC MATH SECTION -->
+    <section id="math" class="py-20 lg:py-32 bg-background-dark text-white border-b border-white/5">
         <div class="max-w-7xl mx-auto px-5 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div class="space-y-8 order-2 lg:order-1">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-5xl font-black mb-6 tracking-tight">Smart Rebalancing. Just Math.</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                    We use a deterministic <strong>Inflow Rebalancing</strong> engine. When you deposit, we calculate
+                    exactly what to buy to keep your portfolio perfectly balanced. No selling, no tax events.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Connector Lines (Desktop) -->
+                <div
+                    class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-white/5 via-primary/50 to-white/5 border-t border-dashed border-white/20 z-0">
+                </div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col items-center text-center gap-6">
                     <div
-                        class="inline-block px-4 py-1.5 rounded-full bg-slate-100 text-slate-600 font-bold text-xs uppercase tracking-wider">
-                        Our Origin</div>
-                    <h2 class="text-3xl md:text-5xl font-black tracking-tight">Engineered in Dublin. For Irish Wallets.
-                    </h2>
-                    <div class="space-y-6 text-slate-600 leading-relaxed text-base md:text-lg">
-                        <p>
-                            We are a team of engineers and investors based in Dublin 2. We were tired of watching 38% of
-                            our ETF gains disappear. So, we built the solution.
-                        </p>
-                        <p>
-                            Project Direct is the productization of our collective vision to automate "Direct
-                            Indexing"—buying the actual shares instead of the wrapper.
-                        </p>
+                        class="w-24 h-24 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center shadow-[0_0_30px_-10px_rgba(255,255,255,0.1)]">
+                        <span class="material-symbols-outlined text-4xl text-blue-400">grid_view</span>
                     </div>
-                    <div class="flex items-center gap-4 pt-4 border-t border-slate-100">
-                        <div class="flex -space-x-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center font-bold text-xs">
-                                PD</div>
-                            <div
-                                class="w-10 h-10 rounded-full bg-primary border-2 border-white flex items-center justify-center font-bold text-xs">
-                                D2</div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-background-dark text-base">Dublin Engineering Team</p>
-                            <p class="text-sm text-slate-500 italic">Project Direct HQ</p>
-                        </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">1. Pick a Theme</h3>
+                        <p class="text-sm text-slate-400">Select a basket like Tech Titans or Green Energy.</p>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2">
+
+                <!-- Step 2 -->
+                <div class="relative z-10 flex flex-col items-center text-center gap-6">
                     <div
-                        class="dublin-map relative w-full aspect-square rounded-2xl overflow-hidden border border-slate-200 shadow-xl">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg class="w-full h-full opacity-30" viewBox="0 0 400 400">
-                                <path d="M0,150 L400,200" fill="none" stroke="#64748b" stroke-width="2"></path>
-                                <path d="M0,200 L400,250" fill="none" stroke="#64748b" stroke-width="2"></path>
-                                <path d="M150,0 L200,400" fill="none" stroke="#64748b" stroke-width="1"></path>
-                                <path d="M250,0 L210,400" fill="none" stroke="#64748b" stroke-width="1"></path>
-                                <path d="M100,50 L350,350" fill="none" stroke="#64748b" stroke-width="0.5"></path>
-                                <circle cx="280" cy="220" fill="none" r="100" stroke="#64748b" stroke-width="0.5">
-                                </circle>
-                            </svg>
-                        </div>
-                        <div class="absolute top-[52%] left-[68%] -translate-x-1/2 -translate-y-1/2">
-                            <div class="relative flex h-12 w-12 items-center justify-center">
-                                <span
-                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-20"></span>
-                                <span
-                                    class="relative inline-flex rounded-full h-4 w-4 bg-primary border-2 border-background-dark shadow-lg"></span>
-                                <div
-                                    class="absolute top-full mt-2 bg-background-dark text-white text-[10px] font-bold px-2 py-1 rounded border border-white/10 whitespace-nowrap uppercase tracking-widest">
-                                    Silicon Docks
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute bottom-4 right-4 text-[10px] font-mono text-slate-400">53.3419° N, 6.2367°
-                            W</div>
+                        class="w-24 h-24 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center shadow-[0_0_30px_-10px_rgba(255,255,255,0.1)]">
+                        <span class="material-symbols-outlined text-4xl text-purple-400">link</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">2. Link Broker</h3>
+                        <p class="text-sm text-slate-400">Connect to your regulated brokerage account securely.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 flex flex-col items-center text-center gap-6">
+                    <div
+                        class="w-24 h-24 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_30px_-10px_rgba(16,185,129,0.3)]">
+                        <span class="material-symbols-outlined text-4xl text-primary">trending_up</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-primary mb-2">3. Automate</h3>
+                        <p class="text-sm text-slate-400">Our engine buys fractional shares to balance your portfolio.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="bg-background-dark py-20 lg:py-32 border-y border-white/5" id="security">
+
+    <!-- SECURITY SECTION -->
+    <section class="py-20 lg:py-32 bg-surface-dark border-t border-white/5" id="security">
         <div class="max-w-7xl mx-auto px-5 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">Non-Custodial Architecture
                 </h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                    Your assets are held in your own name at a regulated broker. We just send the trade signals.
+                </p>
             </div>
+
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-4 mb-16 text-white">
                 <div class="flex flex-col items-center gap-4">
                     <div
-                        class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-3xl md:text-4xl text-primary">person</span>
+                        class="w-20 h-20 rounded-full bg-background-dark border border-white/10 flex items-center justify-center shadow-lg">
+                        <span class="material-symbols-outlined text-4xl text-primary">person</span>
                     </div>
-                    <span class="font-bold text-lg">User</span>
+                    <span class="font-bold text-lg">You</span>
                 </div>
+
                 <!-- Connector 1 -->
-                <div class="flex flex-col items-center gap-2 px-2 md:px-4">
+                <div class="flex flex-col items-center gap-2 px-4 flex-1 max-w-[150px]">
                     <span class="text-[10px] uppercase font-bold text-white/40 tracking-widest text-center">Encrypted
                         Keys</span>
-                    <span class="material-symbols-outlined text-white/20 rotate-90 md:rotate-0">arrow_forward</span>
+                    <div class="h-0.5 w-full bg-white/10 relative">
+                        <div class="absolute inset-y-0 left-0 w-1/2 bg-primary"></div>
+                    </div>
                 </div>
+
                 <div class="flex flex-col items-center gap-4">
                     <div
-                        class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative">
-                        <div class="absolute inset-0 bg-primary/10 rounded-full animate-pulse"></div>
-                        <span class="material-symbols-outlined text-3xl md:text-4xl text-white">dns</span>
+                        class="w-24 h-24 rounded-full bg-background-dark border-2 border-primary/20 flex items-center justify-center relative shadow-[0_0_30px_-5px_rgba(16,185,129,0.2)]">
+                        <span class="material-symbols-outlined text-4xl text-white">dns</span>
+                        <div
+                            class="absolute -top-2 -right-2 bg-primary text-background-dark text-[10px] font-bold px-2 py-0.5 rounded uppercase">
+                            Engine</div>
                     </div>
-                    <span class="font-bold text-lg text-center">Project Direct (Trade Signals)</span>
+                    <span class="font-bold text-lg text-center">Project Direct</span>
                 </div>
+
                 <!-- Connector 2 -->
-                <div class="flex flex-col items-center gap-2 px-2 md:px-4">
-                    <span class="text-[10px] uppercase font-bold text-white/40 tracking-widest text-center">Trade-Only
+                <div class="flex flex-col items-center gap-2 px-4 flex-1 max-w-[150px]">
+                    <span class="text-[10px] uppercase font-bold text-white/40 tracking-widest text-center">Trade
                         API</span>
-                    <span class="material-symbols-outlined text-white/20 rotate-90 md:rotate-0">arrow_forward</span>
+                    <div class="h-0.5 w-full bg-white/10 relative">
+                        <div class="absolute inset-y-0 left-0 w-1/2 bg-primary"></div>
+                    </div>
                 </div>
+
                 <div class="flex flex-col items-center gap-4">
                     <div
-                        class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-3xl md:text-4xl text-primary">account_balance</span>
+                        class="w-20 h-20 rounded-full bg-background-dark border border-white/10 flex items-center justify-center shadow-lg">
+                        <span class="material-symbols-outlined text-4xl text-primary">account_balance</span>
                     </div>
-                    <span class="font-bold text-lg text-center">Brokerage (Assets Held Here)</span>
+                    <span class="font-bold text-lg text-center">Brokerage</span>
                 </div>
             </div>
+
             <div class="flex justify-center">
                 <div
-                    class="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-primary/10 border border-primary/20 text-primary backdrop-blur-sm">
+                    class="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-primary/5 border border-primary/10 text-primary backdrop-blur-sm">
                     <span class="material-symbols-outlined">verified_user</span>
-                    <span class="font-bold text-sm md:text-base text-center">Your money never leaves registered broker.
-                        We use
-                        'Trade-Only' API access.</span>
+                    <span class="font-bold text-sm md:text-base text-center">We never touch your money.</span>
                 </div>
             </div>
         </div>
     </section>
-    <section id="faq" class="py-20 lg:py-32 bg-background-light border-t border-slate-200">
-        <div class="max-w-4xl mx-auto px-5 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-black text-background-dark mb-12 text-center tracking-tight">Frequent
-                Questions</h2>
-            <div class="space-y-4">
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 border-l-4 border-l-primary">
-                    <h3 class="text-lg md:text-xl font-bold text-background-dark mb-3">What is Direct Indexing?</h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        It's a strategy used by wealthy investors to replicate an index (like the S&P 500) by buying the
-                        stocks directly, rather than buying a fund. This avoids the 38% Deemed Disposal Tax.
-                    </p>
-                </div>
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8">
-                    <h3 class="text-lg md:text-xl font-bold text-background-dark mb-3">Do you hold my money?</h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Never. Your assets sit in your own Interactive Brokers or Alpaca account.
-                    </p>
-                </div>
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8">
-                    <h3 class="text-lg md:text-xl font-bold text-background-dark mb-3">Why not a Pension?</h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Pensions are for age 60+. This is for your 'Bridge' years (House, Wedding, Early Retirement).
-                    </p>
-                </div>
-            </div>
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8">
-                <h3 class="text-lg md:text-xl font-bold text-background-dark mb-3">Is it really as passive as an
-                    ETF?</h3>
-                <p class="text-slate-600 leading-relaxed">
-                    <strong>Yes.</strong> We built it for "Lazy Investing." You don't need spreadsheets. When you
-                    deposit funds, our engine uses <strong>Inflow Rebalancing</strong>—it automatically calculates
-                    which stocks are underweight and buys only those. You get index tracking without doing the math.
-                </p>
-            </div>
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8">
-                <h3 class="text-lg md:text-xl font-bold text-background-dark mb-3">How do I sell? Do I have to click
-                    50 times?</h3>
-                <p class="text-slate-600 leading-relaxed">
-                    <strong>No.</strong> You use our "One-Click Withdraw." You simply type the amount you need
-                    (e.g., €5,000). The engine automatically sells the correct fraction of each stock to maintain
-                    your portfolio balance, executing all trades instantly.
-                </p>
-            </div>
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8">
-                <h3 class="text-lg md:text-xl font-bold text-background-dark mb-3">What happens if a company drops
-                    out of the criteria?</h3>
-                <p class="text-slate-600 leading-relaxed">
-                    <strong>We remove it to keep your index pure.</strong>
-                    <br><br>
-                    If a stock no longer meets the criteria (e.g., it falls out of the Top 30), our engine flags it
-                    for removal.
-                    We prioritize selling it when it is at a <strong>loss</strong> (to lower your tax bill).
-                    If it is at a <strong>gain</strong>, we may phase it out slowly to avoid an unnecessary tax
-                    bill.
-                </p>
-            </div>
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8">
-                <h3 class="text-lg md:text-xl font-bold text-background-dark mb-3">Are the taxes complicated to
-                    file?</h3>
-                <p class="text-slate-600 leading-relaxed">
-                    <strong>We automate the math.</strong>
-                    <br><br>
-                    Calculating Capital Gains Tax (CGT) manually is painful. That's why we built the <strong>Tax
-                        Hub</strong>.
-                    At the end of the year, you can download a "Revenue-Ready" PDF Report. It gives you the exact
-                    figures to copy-paste into your <strong>Revenue Form CG1</strong>. We track every trade,
-                    dividend, and currency conversion for you.
-                </p>
-            </div>
-        </div>
-    </section>
-    <section class="py-12 bg-[#08241b] border-t border-white/5">
+
+    <!-- BETA ACCESS / FOOTER SECTION -->
+    <footer id="join" class="py-20 lg:py-32 bg-background-dark">
         <div class="max-w-7xl mx-auto px-5 lg:px-8">
-            <p class="text-center text-white/30 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-8">
-                Powered by Institutional Infrastructure</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale contrast-125">
-                <span class="text-xl md:text-2xl font-black text-white italic tracking-tighter">Alpaca</span>
-                <span class="text-xl md:text-2xl font-bold text-white tracking-tight flex items-center gap-1">
-                    <span class="material-symbols-outlined text-xl">account_balance</span> TrueLayer
-                </span>
-                <span class="text-xl md:text-2xl font-bold text-white">AWS</span>
-                <span class="text-xl md:text-2xl font-mono text-white flex items-center gap-2">
-                    <span class="text-blue-400">python</span>
-                </span>
-            </div>
-        </div>
-    </section>
-    <footer class="bg-background-dark py-16 lg:py-24 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-5 lg:px-8 text-center">
-            <div class="max-w-2xl mx-auto flex flex-col gap-10 mb-16 lg:mb-24">
-                <div>
-                    <h3 class="text-3xl md:text-4xl font-black text-white mb-6 tracking-tight">Join our Alpha.</h3>
-                    <p class="text-white/50 text-base md:text-lg mb-8">We're onboarding our first 500 users manually to
-                        ensure perfect execution.</p>
-                    <form class="flex flex-col sm:flex-row gap-4" method="POST" action="/success" data-netlify="true"
-                        name="waitlist-footer">
-                        <input type="hidden" name="form-name" value="waitlist-footer" />
-                        <input
-                            class="flex-1 bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-base"
-                            placeholder="you@example.com" type="email" name="email" required />
-                        <button
-                            class="bg-primary text-background-dark px-10 py-4 rounded-lg font-bold text-lg hover:opacity-90 active:scale-[0.98] transition-all whitespace-nowrap"
-                            type="submit">
-                            Get Early Access
-                        </button>
-                    </form>
-                </div>
-                <div class="flex flex-col items-center gap-6 text-white/40">
-                    <div class="flex items-center gap-3 text-base font-medium">
-                        <span class="material-symbols-outlined text-primary text-2xl">location_on</span>
-                        <span>Built in Dublin, Ireland 🇮🇪</span>
+            <div class="max-w-3xl mx-auto">
+                <!-- BETA ACCESS CARD -->
+                <div
+                    class="bg-gradient-to-br from-surface-dark to-slate-900 rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2">
                     </div>
-                    <p class="text-xs md:text-sm leading-relaxed max-w-md">Project Direct is currently in Alpha. We are
-                        an automation tool, not a regulated financial advisor.</p>
+
+                    <div class="relative z-10 text-center space-y-8">
+                        <div>
+                            <span
+                                class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider mb-4 border border-primary/20">
+                                Limited Availability
+                            </span>
+                            <h2 class="text-3xl md:text-5xl font-black text-white mb-4">Secure Early Access</h2>
+                            <p class="text-slate-400 text-lg">
+                                Join 500+ investors skipping the ETF wrapper. We are onboarding users in batches.
+                            </p>
+                        </div>
+
+                        <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" method="POST" action="/success"
+                            data-netlify="true" name="waitlist">
+                            <input type="hidden" name="form-name" value="waitlist" />
+                            <input
+                                class="flex-1 bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 text-base transition-all"
+                                placeholder="name@email.com" type="email" name="email" required />
+                            <button
+                                class="bg-primary text-background-dark px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all whitespace-nowrap"
+                                type="submit">
+                                Secure Access
+                            </button>
+                        </form>
+
+                        <p class="text-xs text-slate-500">
+                            By joining, you agree to our Terms. No spam, ever.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div
-                class="pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-bold uppercase tracking-widest text-white/20">
-                <div class="flex gap-8">
-                    <a class="hover:text-primary transition-colors" href="#">Privacy</a>
-                    <a class="hover:text-primary transition-colors" href="#">Terms</a>
-                    <a class="hover:text-primary transition-colors" href="#">Twitter</a>
+
+                <!-- Footer Links -->
+                <div
+                    class="mt-16 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-bold uppercase tracking-widest text-slate-600">
+                    <p>© 2024 Project Direct.</p>
+                    <div class="flex gap-8">
+                        <a class="hover:text-primary transition-colors" href="#">Twitter</a>
+                        <a class="hover:text-primary transition-colors" href="#">Privacy</a>
+                    </div>
                 </div>
-                <p>© 2024 Project Direct. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-
 </body>
 
 </html>
